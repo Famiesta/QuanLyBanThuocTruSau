@@ -30,14 +30,24 @@ namespace PMQuanLyBanHang_thuoctrusau_
             if (role == "QuanLy")
             {
                 MessageBox.Show("Đăng nhập thành công với quyền quản lý", "Thông báo");
+                Dashboard_cs mainForm = new Dashboard_cs();
+                this.Hide();
+                mainForm.ShowDialog();
+                this.Show();
             }
             else if (role == "NhanVien")
             {
                 MessageBox.Show("Đăng nhập thành công với quyền nhân viên", "Thông báo");
+                Dashboard_cs mainForm = new Dashboard_cs();
+                this.Hide();
+                mainForm.ShowDialog();
+                this.Show();
             }
             else if (role == "err")
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Clear();
+                txtPassword.Clear();   
             }
             else
             {
@@ -50,18 +60,27 @@ namespace PMQuanLyBanHang_thuoctrusau_
             try
             {
                 conn.Open();
-                string query = "SELECT VaiTro FROM TaiKhoan WHERE TenDangNhap = @username AND MatKhauHash = @password";
+                string query = "SELECT NhanVien.MaNhanVien, VaiTro, MatKhauHash FROM TaiKhoan, NhanVien WHERE TaiKhoan.MaNhanVien = NhanVien.MaNhanVien AND TaiKhoan.TenDangNhap = @username";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
                     SqlDataReader reader = cmd.ExecuteReader();
+
                     if (reader.Read())
                     {
-                        Session.MaTK = reader["MaTK"].ToString();
-                        Session.VaiTro = reader["VaiTro"].ToString();
-                        Session.TenDangNhap = username;
-                        return Session.VaiTro;
+                        string hashedPasswordFromDB = reader["MatKhauHash"].ToString();
+
+                        // So sánh mật khẩu bằng BCrypt
+                        bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(password, hashedPasswordFromDB);
+
+                        if (isPasswordCorrect)
+                        {
+                            Session.MaTK = reader["MaNhanVien"].ToString();
+                            Session.VaiTro = reader["VaiTro"].ToString();
+                            Session.TenDangNhap = username;
+                            return Session.VaiTro;
+                        }
+                        else return "err";
                     }
                     else return "err";
                 }
@@ -84,9 +103,52 @@ namespace PMQuanLyBanHang_thuoctrusau_
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
             connectDB();
+            txtUsername.Focus();
             txtUsername.Text = Properties.Settings.Default.Username;
             txtPassword.Text = Properties.Settings.Default.Password;
             chkRemember.Checked = Properties.Settings.Default.RememberMe;
+            txtUsername.ForeColor = Color.Gray;
+            txtUsername.Text = "Tên đăng nhập";
+            txtUsername.GotFocus += (s, ev) =>
+            {
+                if (txtUsername.Text == "Tên đăng nhập")
+                {
+                    txtUsername.Text = "";
+                    txtUsername.ForeColor = Color.Black;
+                }
+            };
+            txtUsername.LostFocus += (s, ev) =>
+
+            {
+                if (string.IsNullOrWhiteSpace(txtUsername.Text))
+                {
+                    txtUsername.Text = "Tên đăng nhập";
+                    txtUsername.ForeColor = Color.Gray;
+                }
+            };
+            txtPassword.ForeColor = Color.Gray;
+            txtPassword.PasswordChar = '\0';
+            txtPassword.Text = "Mật khẩu";
+            txtPassword.GotFocus += (s, ev) =>
+            {
+                if (txtPassword.Text == "Mật khẩu")
+                {
+                    txtPassword.PasswordChar = '*';
+                    txtPassword.Text = "";
+                    txtPassword.ForeColor = Color.Black;
+                }
+            };
+            txtPassword.LostFocus += (s, ev) =>
+
+            {
+                if (string.IsNullOrWhiteSpace(txtPassword.Text))
+                {
+                    txtPassword.PasswordChar = '\0';
+                    txtPassword.Text = "Mật khẩu";
+                    txtPassword.ForeColor = Color.Gray;
+                }
+            };
+
         }
 
         private void frmDangNhap_FormClosing(object sender, FormClosingEventArgs e)

@@ -124,11 +124,11 @@
   <data name="thuoc-bao-ve-thuc-vat1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thuoc-bao-ve-thuc-vat1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thuoc-bao-ve-thuc-vat3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\thuoc-bao-ve-thuc-vat3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="thuoc-bao-ve-thuc-vat6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thuoc-bao-ve-thuc-vat2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thuoc-bao-ve-thuc-vat7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thuoc-bao-ve-thuc-vat4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="thuoc-bao-ve-thuc-vat4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thuoc-bao-ve-thuc-vat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,10 +136,16 @@
   <data name="thuoc-bao-ve-thuc-vat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thuoc-bao-ve-thuc-vat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="thuoc-bao-ve-thuc-vat3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thuoc-bao-ve-thuc-vat3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="thuoc-bao-ve-thuc-vat2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thuoc-bao-ve-thuc-vat2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thuoc-bao-ve-thuc-vat7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\thuoc-bao-ve-thuc-vat4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="excel_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\excel_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="report_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\report_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

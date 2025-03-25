@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace PMQuanLyBanHang_thuoctrusau_
 {
-    public partial class Dashboard_cs : Form
+    public partial class PhieuHoaDon : Form
     {
-        public Dashboard_cs()
+        public PhieuHoaDon()
         {
             InitializeComponent();
-        }
-
-        private void btnTaiKhoan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
